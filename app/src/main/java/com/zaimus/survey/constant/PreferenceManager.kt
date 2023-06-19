@@ -9,6 +9,17 @@ class PreferenceManager {
 
         private val PREFSNAME = "ZAIMUS_SURVEY"
 
+        /************************* LOGIN FLAG ************************/
+        fun setLoginFlag(context: Context, flag: String?) {
+            val prefs = context.getSharedPreferences(PREFSNAME, Context.MODE_PRIVATE)
+            val editor = prefs.edit()
+            editor.putString("login_flag", flag.toString())
+            editor.apply()
+        }
+        fun getLoginFlag(context: Context): String? {
+            val prefs = context.getSharedPreferences(PREFSNAME, Context.MODE_PRIVATE)
+            return prefs.getString("login_flag", "0")
+        }
 
         /************************* TOKEN ************************/
         fun setToken(context: Context, token: String?) {
